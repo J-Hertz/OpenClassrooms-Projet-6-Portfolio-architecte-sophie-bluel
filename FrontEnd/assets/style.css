@@ -261,6 +261,7 @@ footer nav ul {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	margin:0.5rem 0 2.5rem 0;
 	font-size: 1rem;
+	padding-left: 1rem;
 }
 .loginForms input:focus {
 	outline: none;
