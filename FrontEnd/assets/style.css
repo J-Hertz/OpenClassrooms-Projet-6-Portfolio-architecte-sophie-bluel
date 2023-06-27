@@ -282,6 +282,10 @@ footer nav ul {
 	height: 2.5rem;
 	width: 12rem;
 	border: none;
+	text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .forgotPass {
@@ -296,4 +300,8 @@ footer nav ul {
 
 .loginFooter {
 	margin-top: 16rem;
+}
+
+.hidden {
+	display: none;
 }
