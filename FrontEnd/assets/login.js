@@ -1,9 +1,9 @@
 
 
-function login() {
-    const loginForms = document.querySelector(".loginButton");
+async function login() {
+    const loginButton = document.querySelector(".loginButton");
   
-    loginForms.addEventListener("click", async function(event) {
+    loginButton.addEventListener("click", async function(event) {
         
         event.preventDefault();
     
@@ -22,9 +22,33 @@ function login() {
         });
     
         const data = await response.json();
-        const token = data.token;
-        console.log(token);
+
+        if (response.ok) {
+            // Les identifiants sont corrects, continuer avec le token
+            window.localStorage.setItem("token", data.token);
+            window.localStorage.setItem("loginSuccess", "true");
+            const token = window.localStorage.getItem("token");
+            //console.log(token);
+            window.location.replace("../FrontEnd/index.html");
+        } else {
+            // Les identifiants sont incorrects, afficher un message d'erreur
+
+            const errorContainer = document.getElementById("errorContainer");
+            const error = document.createElement("span");
+            error.classList.add("error");
+            error.innerHTML = "Identifiants incorrects. Veuillez réessayer.";
+            errorContainer.appendChild(error);
+
+            const loginTitle = document.getElementById("loginTitle");
+            loginTitle.classList.remove("loginTitle");
+            loginTitle.classList.add("loginTitleError");
+
+
+
+
+        }
     });
 }
+
 
 login()

@@ -9,25 +9,29 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+    <script src="./assets/login.js" defer></script>
 
 </head>
 <body>
     <header>
-        <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
-        <nav>
-            <ul>
-                <li>projets</li>
-                <li>contact</li>
-                <li>
-                    <a class="loginLink loginLinkSelected" href= "login.html">login</a>
-                </li>
-                <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-            </ul>
-        </nav>
+        <div class="navbar">
+            <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+            <nav>
+                <ul>
+                    <li>projets</li>
+                    <li>contact</li>
+                    <li>
+                        <a class="loginLink loginLinkSelected" href= "login.html">login</a>
+                    </li>
+                    <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
-        <h1 class="loginTitle">Log in</h1>
-
+        <h1 id="loginTitle" class="loginTitle">Log in</h1>
+        <div id="errorContainer">
+        </div>
         <div class="loginForms">
             <label>E-mail</label>
             <input type="email" name="email">
@@ -37,7 +41,6 @@
         <div class="loginButtonContainer">
             <a href="#" class="loginButton">Se connecter</a>
         </div>
-
         <a class="forgotPass" href="#">Mot de passe oublié</a>
     </main>
     <footer class="loginFooter">
@@ -47,6 +50,5 @@
             </ul>
         </nav>
     </footer>
-    <script src="./assets/login.js" defer></script>
 </body>
 </html>

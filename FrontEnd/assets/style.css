@@ -55,6 +55,44 @@ body {
 }
 header {
 	display: flex;
+	flex-direction: column;
+}
+
+.editModeHeader {
+	background-color: black;
+	height: 3rem;
+	width: 100%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerEditIcon {
+	display: block;
+	color: white;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+.headerEditButton {
+	color: white;
+    padding: 0.6rem;
+	font-family: "Work Sans";
+	cursor: pointer;
+}
+
+.headerPublishButton {
+	background-color: white;
+	font-family: "Work Sans";
+	font-weight: bold;
+	padding: 0.6rem 1rem;
+	border-radius: 60px;
+	cursor: pointer;
+
+}
+
+.navbar {
+	display: flex;
 	justify-content: space-between;
 	margin: 50px 0
 }
@@ -66,6 +104,34 @@ header {
 
 .loginLinkSelected {
 	font-weight: 600;
+}
+
+
+.modifyIcon {
+	display: block;
+	color: black;
+	font-size: 1rem;
+	margin: 0 0.5rem 0 0;
+}
+
+.modifyButton {
+	color: black;
+	font-family: "Work Sans";
+	font-weight: 500;
+}
+
+.modifyButtonContainer {
+	display: block;
+	height: 2rem;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	margin: 0.2rem 0;
+
+}
+
+.modifyButtonContainerMargin {
+	margin-left: 10%;
 }
 
 section {
@@ -95,10 +161,14 @@ h2{
 	color: #1D6154
 }
 
+.portfolioContainer h2 {
+	margin: 0 2rem;
+}
+
 .filters {
 	display: flex;
 	justify-content: center;	
-    margin: 4rem;
+    margin: 3rem;
 }
 
 .filterButton {
@@ -165,10 +235,14 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
-#portfolio h2 {
-	text-align: center;
-	margin-bottom: 1em;
+
+.portfolioContainer {
+	display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -236,14 +310,22 @@ footer nav ul {
 	font-size: 30px;
 	display: flex;
 	align-items: center;
-	margin-top: 10rem;
+	margin: 10rem 0 4rem;
+}
+
+.loginTitleError {
+	color: #1D6154;
+	font-size: 30px;
+	display: flex;
+	align-items: center;
+	margin: 10rem 0 0;	
 }
 
 .loginForms {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	margin:5% 32% 0;
+	margin:0 32% 0;
 }
 
 .loginForms label {
@@ -302,6 +384,15 @@ footer nav ul {
 	margin-top: 16rem;
 }
 
+.error {
+	color: red;
+	display: flex;
+    justify-content: center;
+    font-family: "Work Sans";
+    font-size: 1rem;
+    font-weight: 500;
+	margin: 1.5rem;
+}
 .hidden {
-	display: none;
+	visibility: hidden;
 }
