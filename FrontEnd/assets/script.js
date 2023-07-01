@@ -46,6 +46,7 @@ async function start() {
   const loginSuccess = window.localStorage.getItem("loginSuccess");
   if (loginSuccess === "true") {
       indexEditMode();
+      renderModal();
   }
 }
 
@@ -154,4 +155,72 @@ function indexEditMode() {
 
   // Réinitialiser la valeur de loginSuccess
   window.localStorage.setItem("loginSuccess", "false");
+}
+
+
+async function renderModal () {
+
+  let works = await getWorks(); 
+
+  const modalButton = document.querySelector(".headerEditButton")
+  modalButton.addEventListener("click", async (e) => {
+    
+    const modal = document.createElement("div");
+    modal.classList.add("modal");
+
+    const modalContent = document.createElement("div");
+    modalContent.classList.add("modalContent");
+
+    const closeModalIcon = document.createElement("i");
+    closeModalIcon.classList.add("fa-solid", "fa-xmark");
+
+    const modalTitle = document.createElement("h3");
+    modalTitle.classList.add("modalTitle");
+    modalTitle.innerHTML = "Galerie photo";
+
+    const modalGallery = document.createElement("div");
+    modalGallery.classList.add("modalGallery");
+
+    const modalButton = document.createElement("button");
+    modalButton.classList.add("modalButton");
+    modalButton.innerHTML = "Ajouter une photo";
+
+    const modalDeleteGallery = document.createElement("p");
+    modalDeleteGallery.classList.add("modalDeleteGallery");
+    modalDeleteGallery.innerHTML = "Supprimer la gallerie";
+
+    const main = document.getElementById("main");
+
+    main.appendChild(modal);
+    modal.appendChild(modalContent);
+    modalContent.appendChild(closeModalIcon);
+    modalContent.appendChild(modalTitle);
+    modalContent.appendChild(modalGallery);
+    modalContent.appendChild(modalButton);
+    modalContent.appendChild(modalDeleteGallery);
+    
+    for (const work of works) {
+ 
+      const figure = document.createElement("figure");
+      const img = document.createElement("img");
+      const editWork = document.createElement("p");
+
+      img.src = work.imageUrl;
+      img.alt = work.title;
+
+      figure.classList.add("modalFigure");
+      img.classList.add("modalImg");
+      editWork.classList.add("editWork")
+
+      editWork.innerHTML = "éditer";
+
+      figure.appendChild(img);
+      figure.appendChild(editWork);
+      modalGallery.appendChild(figure);
+ 
+      
+    }
+
+
+  });
 }

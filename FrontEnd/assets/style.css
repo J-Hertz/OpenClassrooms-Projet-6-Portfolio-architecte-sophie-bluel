@@ -396,3 +396,94 @@ footer nav ul {
 .hidden {
 	visibility: hidden;
 }
+
+/* modal */
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background: rgb(0,0,0,0.4);
+}
+
+.modalContent {
+    background-color: #FFFFFF;
+    opacity: 1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 630px;
+    height: 730px;
+    border-radius: 10px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fa-xmark {
+	display: flex;
+    align-items: flex-end;
+    width: 90%;
+    justify-content: flex-end;
+    margin: 2rem;
+    font-size: 1.2rem;
+}
+
+.modalTitle {
+	font-size: 26px;
+	font-weight: 400;
+	font-family: "Work Sans";
+	margin: 0 0 4rem 0;
+}
+
+.modalGallery{
+	display: flex;
+	width: 60%;
+	height: 50%;
+	border-bottom: solid 1px #B3B3B3;
+	flex-wrap: wrap;
+}
+
+.modalFigure {
+	margin: 0.4rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.modalImg {
+	height: 5rem;
+}
+
+.editWork{ 
+	font-family: "Work Sans";
+	margin: 0.3rem 0
+}
+
+.modalButton {
+	background-color: #1D6154;
+	color: white;
+	font-family: "Syne";
+	font-weight: 700;
+	font-size: 14px;
+	border-radius: 60px;
+	height: 2.5rem;
+	width: 18rem;
+	border: none;
+	text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	margin: 2rem;
+}
+
+.modalDeleteGallery {
+	color: red;
+	font-family: "Syne";
+	font-size: 12px;
+}
