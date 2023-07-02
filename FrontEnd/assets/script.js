@@ -171,8 +171,13 @@ async function renderModal () {
     const modalContent = document.createElement("div");
     modalContent.classList.add("modalContent");
 
+
     const closeModalIcon = document.createElement("i");
     closeModalIcon.classList.add("fa-solid", "fa-xmark");
+
+    const modalIconContainer = document.createElement("div");
+    modalIconContainer.classList.add("modalIconContainer");
+
 
     const modalTitle = document.createElement("h3");
     modalTitle.classList.add("modalTitle");
@@ -193,34 +198,161 @@ async function renderModal () {
 
     main.appendChild(modal);
     modal.appendChild(modalContent);
-    modalContent.appendChild(closeModalIcon);
+    modalContent.appendChild(modalIconContainer);
+    modalIconContainer.appendChild(closeModalIcon);
     modalContent.appendChild(modalTitle);
     modalContent.appendChild(modalGallery);
     modalContent.appendChild(modalButton);
     modalContent.appendChild(modalDeleteGallery);
     
-    for (const work of works) {
- 
+    for (let i = 0; i < works.length; i++) {
+      const work = works[i];
+    
       const figure = document.createElement("figure");
       const img = document.createElement("img");
-      const editWork = document.createElement("p");
+      const deleteIcon = document.createElement("i");
+      const iconContainer = document.createElement("div");
 
+      iconContainer.classList.add("iconContainer")
+      deleteIcon.classList.add("fa-solid", "fa-trash-can");
+    
+      const editWork = document.createElement("p");
+    
       img.src = work.imageUrl;
       img.alt = work.title;
-
+    
       figure.classList.add("modalFigure");
       img.classList.add("modalImg");
-      editWork.classList.add("editWork")
-
+      editWork.classList.add("editWork");
+    
       editWork.innerHTML = "éditer";
-
+      
       figure.appendChild(img);
       figure.appendChild(editWork);
+      figure.appendChild(iconContainer);
+      
+      
+
+      if (i === 0) {
+        const arrowIcon = document.createElement("i");
+        arrowIcon.classList.add("fa-solid", "fa-arrows-up-down-left-right");
+        iconContainer.appendChild(arrowIcon);
+      }
+      iconContainer.appendChild(deleteIcon);
       modalGallery.appendChild(figure);
- 
+
       
     }
 
+    // Ferme la modale au clic de la croix ou en dehors de modalContent
+    closeModalIcon.addEventListener ("click", async (e) => {
+
+      modal.classList.add("displayNone");
+      
+    });
+    
+    document.addEventListener("click", async (e) => { 
+      if (modal.contains(e.target)) {
+        modal.classList.add("displayNone");
+      }
+    });
+
+    modalContent.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+
+
+    // Menu ajout photo
+    modalButton.addEventListener("click", async (e) => {
+      e.stopPropagation();
+
+      modalTitle.innerHTML ="Ajout photo";
+
+
+      const arrowLeft = document.createElement("i")
+      const iconContainer = document.querySelectorAll(".iconContainer");
+      const modalDeleteGallery = document.querySelector(".modalDeleteGallery")
+
+      modalGallery.innerHTML =""
+
+      modalDeleteGallery.classList.add("displayNone");
+
+      modalButton.classList.add("addImgModalButton")
+      modalButton.innerHTML ="Valider";
+
+
+      const addImgMenu = document.createElement("div");
+      addImgMenu.classList.add("addImgMenu");
+      modalGallery.appendChild(addImgMenu);
+
+      const addImgMenuIcon = document.createElement("i");
+      addImgMenuIcon.classList.add("fa-regular", "fa-image");
+      addImgMenu.appendChild(addImgMenuIcon);
+
+      const addImgMenuButton = document.createElement("div");
+      addImgMenuButton.classList.add("addImgMenuButton");
+      addImgMenuButton.innerHTML="+ Ajouter photo";
+      addImgMenu.appendChild(addImgMenuButton);
+
+      const addImgMenuText = document.createElement("p");
+      addImgMenuText.classList.add("addImgMenuText");
+      addImgMenuText.innerHTML="jpg, png : 4mo max";
+      addImgMenu.appendChild(addImgMenuText);
+
+
+      const addImgForms = document.createElement("div");
+      addImgForms.classList.add("addImgForms");
+
+      const inputTitleLabel = document.createElement("label");
+      inputTitleLabel.innerHTML = "Titre";
+      const inputTitle = document.createElement("input");
+      inputTitle.type = "text";
+
+      const selectCategoryLabel = document.createElement("label");
+      selectCategoryLabel.innerHTML = "Catégorie";
+      const selectCategory = document.createElement("select");
+
+      const emptyOption = document.createElement("option");
+      selectCategory.appendChild(emptyOption);
+
+      const categoriesSet = new Set(); 
+
+    for (const work of works) {
+      categoriesSet.add(work.category.name);
+    }
+
+  
+    for (const category of categoriesSet) {
+      const option = document.createElement("option");
+      option.value = category;
+      option.text = category;
+      selectCategory.appendChild(option);
+    }
+
+    addImgForms.appendChild(inputTitleLabel);
+    addImgForms.appendChild(inputTitle);
+
+    addImgForms.appendChild(selectCategoryLabel)
+    addImgForms.appendChild(selectCategory);
+    
+    modalGallery.appendChild(addImgForms);
+
+
+
+    const modalIconContainer = document.querySelector(".modalIconContainer")
+
+    arrowLeft.classList.add("fa-solid", "fa-arrow-left");
+
+    modalIconContainer.appendChild(arrowLeft);
+
+    arrowLeft.addEventListener("click", async (e) => {
+
+      
+
+    });
+
+
+    });
 
   });
 }

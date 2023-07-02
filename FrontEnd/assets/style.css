@@ -397,6 +397,10 @@ footer nav ul {
 	visibility: hidden;
 }
 
+.displayNone {
+	display: none;
+}
+
 /* modal */
 
 .modal {
@@ -417,8 +421,8 @@ footer nav ul {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 630px;
-    height: 730px;
+    width: 50rem;
+    height: 52rem;
     border-radius: 10px;
     z-index: 2;
     display: flex;
@@ -426,13 +430,27 @@ footer nav ul {
     align-items: center;
 }
 
-.fa-xmark {
-	display: flex;
-    align-items: flex-end;
+.modalIconContainer {
+    display: flex;
+    align-items: center;
     width: 90%;
-    justify-content: flex-end;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+.fa-xmark {
     margin: 2rem;
     font-size: 1.2rem;
+}
+
+.fa-arrow-left {
+	margin: 2rem;
+    font-size: 1.2rem;
+	cursor: pointer;
+}
+
+.fa-xmark::before {
+	cursor: pointer;
 }
 
 .modalTitle {
@@ -444,8 +462,8 @@ footer nav ul {
 
 .modalGallery{
 	display: flex;
-	width: 60%;
-	height: 50%;
+	width: 58%;
+	height: 60%;
 	border-bottom: solid 1px #B3B3B3;
 	flex-wrap: wrap;
 }
@@ -457,7 +475,7 @@ footer nav ul {
 }
 
 .modalImg {
-	height: 5rem;
+	height: 6rem;
 }
 
 .editWork{ 
@@ -480,10 +498,151 @@ footer nav ul {
     justify-content: center;
     align-items: center;
 	margin: 2rem;
+	cursor: pointer;
 }
 
 .modalDeleteGallery {
 	color: red;
 	font-family: "Syne";
 	font-size: 12px;
+	font-weight: 400;
+	margin-bottom: 4rem;
+}
+
+.fa-trash-can {
+	background-color: black;
+    color: white;
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    font-size: 0.7rem;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    padding: 0.1rem;
+	cursor: pointer;
+	margin: 0.1rem;
+}
+
+.fa-arrows-up-down-left-right {
+	background-color: black;
+    color: white;
+    width: 1rem;
+    height: 1rem;
+    display: flex;
+    font-size: 0.7rem;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    padding: 0.1rem;
+	cursor: pointer;
+	margin: 0.1rem;
+}
+
+.iconContainer {
+	position: relative;
+	display: flex;
+	justify-content: flex-end;
+	top: -7.3rem;
+    right: 0.1rem;
+}
+
+.addImgMenu {
+	width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	justify-content: center;
+    background-color: #E8F1F6;
+    border-radius: 3px;
+}
+
+.fa-image {
+	font-size: 4rem;
+    margin: 0.5rem;
+    color: #C7D1D8;
+}
+
+.addImgMenuButton {
+	background-color: #C7D1D8;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 60px;
+    height: 2.5rem;
+    width: 12rem;
+    border: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+    cursor: pointer;
+    color: #306685;
+}
+
+.addImgMenuText {
+	color: #444444;
+    font-size: 12px;
+}
+
+.addImgModalButton {
+	color: white;
+	background-color: #A7A7A7;
+}
+
+.addImgForms {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 60%;
+    width: 100%;
+    justify-content: center;
+}
+
+.addImgForms label {
+	font-family: "Work Sans";
+	font-weight: 500;
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	color:#3D3D3D;
+}
+
+.addImgForms input {
+	width: 100%;
+	border: none;
+	height: 2.8rem;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin:0.5rem 0 2.5rem 0;
+	font-size: 1rem;
+	padding-left: 1rem;
+}
+.addImgForms input:focus {
+	outline: none;
+}
+
+.addImgForms select {
+	width: 100%;
+	border: none;
+	height: 2.8rem;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin:0.5rem 0 2.5rem 0;
+	font-size: 1rem;
+	padding-left: 1rem;
+	background-color: white;
+	cursor: pointer;
+}
+.addImgForms select:focus {
+	outline: none;
+}
+
+.addImgForms select option {
+	font-family: "Work Sans";
+	font-weight: 500;
+	font-size: 14px;
+	color:#3D3D3D;
 }
