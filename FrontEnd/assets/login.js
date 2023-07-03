@@ -14,7 +14,6 @@ async function login() {
     
         const payload = JSON.stringify(forms);
 
-    
         const response = await fetch("http://localhost:5678/api/users/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },

@@ -82,32 +82,33 @@ async function filterWorks() {
 
     filterButton.setAttribute("data-category", category);
 
+    // Ajout d'écouteur d'événements sur chaque bouton de filtre
+    filterButton.addEventListener("click", clickFilter );
+
     filterButton.innerHTML = category;
 
     filters.appendChild(filterButton);
   }
 
-  const filterButtons = document.getElementsByClassName("filterButton");
 
-  for (let i = 0; i < filterButtons.length; i++) {
+}
 
-    // Ajout d'écouteur d'événements sur chaque bouton de filtre
-    filterButtons[i].addEventListener("click", async (e) => {
-      let works = await getWorks()
+async function clickFilter(e) {
 
-      const category = e.target.dataset.category;
-      
-      // Applique le filtre sur le tableau "filteredWorks"
-      if (category !== "Tous") {
-        works = works.filter(
-          (work) => work.category.name === category
-        );
-        
-      }
+  let works = await getWorks()
 
-      renderWorks(works);
-    });
+  const category = e.target.dataset.category;
+  
+  // Applique le filtre sur le tableau "filteredWorks"
+  if (category !== "Tous") {
+    works = works.filter(
+      (work) => work.category.name === category
+    );
+    
   }
+
+    renderWorks(works);
+  
 }
 
 
@@ -153,8 +154,6 @@ function indexEditMode() {
   const filters = document.getElementById("filters");
   filters.classList.add("hidden");
 
-  // Réinitialiser la valeur de loginSuccess
-  window.localStorage.setItem("loginSuccess", "false");
 }
 
 
