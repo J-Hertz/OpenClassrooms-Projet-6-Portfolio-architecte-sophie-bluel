@@ -25,9 +25,7 @@ async function login() {
         if (response.ok) {
             // Les identifiants sont corrects, continuer avec le token
             window.localStorage.setItem("token", data.token);
-            window.localStorage.setItem("loginSuccess", "true");
             const token = window.localStorage.getItem("token");
-            //console.log(token);
             window.location.replace("../FrontEnd/index.html");
         } else {
             // Les identifiants sont incorrects, afficher un message d'erreur

@@ -566,7 +566,7 @@ footer nav ul {
     color: #C7D1D8;
 }
 
-.addImgMenuButton {
+.addImgMenuButtonLabel {
 	background-color: #C7D1D8;
     color: white;
     font-weight: 700;
@@ -592,6 +592,13 @@ footer nav ul {
 .addImgModalButton {
 	color: white;
 	background-color: #A7A7A7;
+}
+
+.addedImg {
+	width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 3px;
 }
 
 .addImgForms {
