@@ -36,7 +36,7 @@ async function start() {
   renderWorks(works);
   filterWorks();
   indexEditMode();
-  renderModalGallery();
+  addClickRenderModalGallery();
 }
 
 start();
@@ -251,6 +251,11 @@ async function renderModalGallery() {
       }
       iconContainer.appendChild(deleteIcon);
       modalGallery.appendChild(figure);
+
+      deleteIcon.addEventListener("click", async () => {
+        const workId = work.id; 
+        await deleteWorks(workId);
+      });
     }
 
     // Ferme la modale au clic de la croix ou en dehors de modalContent
@@ -281,7 +286,6 @@ async function addClickRenderModalGallery() {
   
   openModalButton.addEventListener("click", async (e) => {
     renderModalGallery();
-    console.log("toto")
   });
 }
 
@@ -424,13 +428,13 @@ async function submitWork() {
   const title = inputTitle.value;
   const category = selectCategory.value;
   const imageFile = document.getElementById("imageFile");
-  console.log(imageFile.files[0]);
+  
   // Crée un objet FormData pour envoyer les données avec la requête
   const formData = new FormData();
   formData.append("title", title);
   formData.append("category", category);
   formData.append("imageFile", imageFile.files[0]);
-
+  console.log(formData);
   try {
     const response = await fetch("http://localhost:5678/api/works", {
       method: "POST",
@@ -441,5 +445,28 @@ async function submitWork() {
     });
   } catch (error) {
     console.error("Erreur lors de l'ajout de l'image :", error);
+  }
+}
+
+// Supprime un élément du tableau works
+async function deleteWorks(workId) {
+  const token = localStorage.getItem("token");
+
+  try {
+    await fetch(`http://localhost:5678/api/works/${workId}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    // Récupère à nouveau les works après la suppression
+    let works = await getWorks();
+
+    // Re-render la galerie avec les works mis à jour
+    renderWorks(works);
+    renderModalGallery();
+  } catch (error) {
+    console.error("Erreur lors de la suppression de l'élément :", error);
   }
 }
