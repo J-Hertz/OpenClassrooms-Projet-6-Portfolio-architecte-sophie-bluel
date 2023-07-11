@@ -254,7 +254,10 @@ async function renderModalGallery() {
 
       deleteIcon.addEventListener("click", async () => {
         const workId = work.id; 
-        await deleteWorks(workId);
+        if (window.confirm("Etes-vous sûr(e) de vouloir supprimer "+ work.title)) {
+          await deleteWorks(workId);
+        }
+        
       });
     }
 
@@ -417,36 +420,70 @@ async function renderModalAddImgMenu() {
     console.log("toto");
     renderModalGallery();
   });
-
-  addImgModalButton.addEventListener("click", submitWork);
+  
+  addImgModalButton.addEventListener("click", async (e) => {
+    submitWorks();
+  });
 }
 
-async function submitWork() {
+async function submitWorks() {
   const token = localStorage.getItem("token");
-  const inputTitle = document.getElementById("inputTitle");
-  const selectCategory = document.getElementById("selectCategory");
-  const title = inputTitle.value;
-  const category = selectCategory.value;
-  const imageFile = document.getElementById("imageFile");
+  let imageFile = document.getElementById("imageFile");
+  let inputTitle = document.getElementById("inputTitle");
+  let selectCategory = document.getElementById("selectCategory");
+  const categoryMap = {
+    "Objets": 1,
+    "Appartements": 2,
+    "Hotels & restaurants": 3
+  };
   
-  // Crée un objet FormData pour envoyer les données avec la requête
-  const formData = new FormData();
-  formData.append("title", title);
-  formData.append("category", category);
-  formData.append("imageFile", imageFile.files[0]);
-  console.log(formData);
-  try {
-    const response = await fetch("http://localhost:5678/api/works", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: formData,
-    });
-  } catch (error) {
-    console.error("Erreur lors de l'ajout de l'image :", error);
+  const selectedCategory = categoryMap[selectCategory.value];
+  
+
+  // Vérifier si tous les champs sont remplis
+  if (imageFile && inputTitle && selectCategory) {
+
+
+    // Créer un objet FormData pour envoyer les données multipart/form-data
+    const formData = new FormData();
+    formData.append("image", imageFile.files[0]);
+    formData.append("title", inputTitle.value);
+    formData.append("category", selectedCategory);
+
+    
+
+    try {
+      const response = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+
+      if (response.ok) {
+        // Work ajouté avec succès
+        const newWork = await response.json();
+
+        // Récupérer à nouveau les works après l'ajout
+        let works = await getWorks();
+
+        // Re-render la galerie avec les works mis à jour
+        renderWorks(works);
+        renderModalGallery();
+      } else {
+        // La requête a échoué
+        console.error("Erreur lors de l'ajout du work :", response.status);
+      }
+    } catch (error) {
+      console.error("Erreur lors de l'ajout du work :", error);
+    }
+  } else {
+    // Afficher un message d'erreur si tous les champs ne sont pas remplis
+    console.error("Veuillez remplir tous les champs.");
   }
 }
+
 
 // Supprime un élément du tableau works
 async function deleteWorks(workId) {
