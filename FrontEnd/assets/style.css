@@ -318,14 +318,14 @@ footer nav ul {
 	font-size: 30px;
 	display: flex;
 	align-items: center;
-	margin: 10rem 0 0;	
+	margin: 10rem 0 2rem;	
 }
 
 .loginForms {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	margin:0 32% 0;
+	margin:1rem 32% 0rem;
 }
 
 .loginForms label {
@@ -391,8 +391,12 @@ footer nav ul {
     font-family: "Work Sans";
     font-size: 1rem;
     font-weight: 500;
-	margin: 1.5rem;
+
 }
+
+
+
+
 .hidden {
 	visibility: hidden;
 }
