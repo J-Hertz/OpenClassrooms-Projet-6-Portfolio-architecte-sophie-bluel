@@ -32,8 +32,12 @@ async function login() {
       if (emailError) {
         emailError.remove();
       }
+      loginForms = document.getElementById("loginForms");
+      loginForms.classList.add("loginFormsErrorMargin");
+
       const newEmailError = document.createElement("span");
       newEmailError.classList.add("error");
+      newEmailError.classList.add("loginErrorMargin")
       newEmailError.setAttribute("id", "emailError");
       newEmailError.innerHTML = "Veuillez renseigner une adresse email valide.";
       email.parentNode.insertBefore(newEmailError, email.nextSibling);
@@ -44,8 +48,12 @@ async function login() {
       if (passwordError) {
         passwordError.remove();
       }
+      loginForms = document.getElementById("loginForms");
+      loginForms.classList.add("loginFormsErrorMargin");
+
       const newPasswordError = document.createElement("span");
       newPasswordError.classList.add("error");
+      newPasswordError.classList.add("loginErrorMargin")
       newPasswordError.setAttribute("id", "passwordError");
       newPasswordError.innerHTML = "Le mot de passe doit comporter au moins 6 caractères dont une lettre et un chiffre.";
       password.parentNode.insertBefore(newPasswordError, password.nextSibling);

@@ -304,6 +304,14 @@ footer nav ul {
 	margin: 2em
 }
 
+.hidden {
+	visibility: hidden;
+}
+
+.displayNone {
+	display: none;
+}
+
 /** Login Page **/
 .loginTitle {
 	color: #1D6154;
@@ -327,6 +335,8 @@ footer nav ul {
 	align-items: flex-start;
 	margin:1rem 32% 0rem;
 }
+
+
 
 .loginForms label {
 	font-family: "Work Sans";
@@ -394,16 +404,16 @@ footer nav ul {
 
 }
 
-
-
-
-.hidden {
-	visibility: hidden;
+.loginErrorMargin {
+	margin: 0 0 0.5rem;
 }
 
-.displayNone {
-	display: none;
+.loginFormsErrorMargin input {
+	margin: 0.5rem 0 1.5rem 0;
 }
+
+
+
 
 /* modal */
 
