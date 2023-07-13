@@ -467,7 +467,8 @@ async function submitWorks() {
 
         // Re-render la galerie avec les works mis à jour
         renderWorks(works);
-        renderModalGallery();
+        const modal = document.querySelector(".modal")
+        modal.classList.add("displayNone");
       } else {
         // La requête a échoué
         console.error("Erreur lors de l'ajout du work :", response.status);
