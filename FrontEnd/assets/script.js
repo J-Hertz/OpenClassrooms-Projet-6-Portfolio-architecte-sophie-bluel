@@ -54,6 +54,10 @@ async function filterWorks() {
   filterButton.innerHTML = "Tous";
   filters.appendChild(filterButton);
 
+  filterButton.addEventListener("click", clickFilter);
+
+  filters.appendChild(filterButton);
+
   const categoriesSet = new Set(); // Crée un ensemble pour stocker les catégories uniques
 
   // Parcourir les objets dans le tableau works et ajouter les catégories à l'ensemble
