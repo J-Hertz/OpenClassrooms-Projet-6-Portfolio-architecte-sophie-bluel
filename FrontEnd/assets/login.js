@@ -1,5 +1,3 @@
-
-
 async function login() {
   const forms = {
     email: document.querySelector("[name=email]").value,
@@ -55,7 +53,7 @@ async function login() {
       newPasswordError.classList.add("error");
       newPasswordError.classList.add("loginErrorMargin")
       newPasswordError.setAttribute("id", "passwordError");
-      newPasswordError.innerHTML = "Le mot de passe doit comporter au moins 6 caractères dont une lettre et un chiffre.";
+      newPasswordError.innerHTML = "Veuillez renseigner un mot de passe valide.";
       password.parentNode.insertBefore(newPasswordError, password.nextSibling);
       if (emailError) {
         emailError.remove();

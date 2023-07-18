@@ -421,7 +421,6 @@ async function renderModalAddImgMenu() {
 
   arrowLeft.addEventListener("click", async (e) => {
     //  e.stopPropagation();
-    console.log("toto");
     renderModalGallery();
   });
 
