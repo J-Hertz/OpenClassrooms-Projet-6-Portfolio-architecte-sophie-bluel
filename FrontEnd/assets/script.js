@@ -257,11 +257,7 @@ async function renderModalGallery() {
 
       deleteIcon.addEventListener("click", async () => {
         const workId = work.id;
-        if (
-          window.confirm("Etes-vous sûr(e) de vouloir supprimer " + work.title)
-        ) {
-          await deleteWorks(workId);
-        }
+        await deleteWorks(workId);
       });
     }
 
@@ -289,11 +285,13 @@ async function renderModalGallery() {
 }
 
 async function addClickRenderModalGallery() {
-  const openModalButton = document.getElementById("openModalButton");
+  if (isLoggedIn() === true) {
+    const openModalButton = document.getElementById("openModalButton");
 
-  openModalButton.addEventListener("click", async (e) => {
-    renderModalGallery();
-  });
+    openModalButton.addEventListener("click", async (e) => {
+      renderModalGallery();
+    });
+  }
 }
 
 async function renderModalAddImgMenu() {
@@ -470,7 +468,7 @@ async function submitWorks() {
 
         // Re-render la galerie avec les works mis à jour
         renderWorks(works);
-        const modal = document.querySelector(".modal")
+        const modal = document.querySelector(".modal");
         modal.classList.add("displayNone");
       } else {
         // La requête a échoué
